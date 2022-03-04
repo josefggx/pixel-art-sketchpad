@@ -276,9 +276,7 @@ const paintPixels = () => {
     });
 }
 
-
 paintPixels();
-
 
 // Reseting the canvas and calling functions again
 // @ts-ignore

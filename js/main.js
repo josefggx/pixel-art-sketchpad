@@ -56,7 +56,32 @@ document.querySelector('#background-color').oninput = () => {
     // @ts-ignore
     backgroundActualColor = document.querySelector('#background-color').value;
     changeBackgroundColor();
+    if(document.querySelector("#grid-lines").classList.contains("active")) {
+        checkForBackground(backgroundActualColor);
+    }
 }
+
+const checkForBackground = (c) => {
+    const color = c.substring(1);      // strip #
+    const rgb = parseInt(color, 16);   // convert rrggbb to decimal
+    const r = (rgb >> 16) & 0xff;  // extract red
+    const g = (rgb >> 8) & 0xff;  // extract green
+    const b = (rgb >> 0) & 0xff;  // extract blue
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+    if(luma < 120) {
+        document.querySelectorAll('.pixel').forEach(e => {
+            // @ts-ignore
+            e.style.border = `1px solid rgba(255, 255, 255, 0.3)`;
+        })
+    } else {
+        document.querySelectorAll('.pixel').forEach(e => {
+            // @ts-ignore
+            e.style.border = `1px solid rgba(0, 0, 0, 0.1)`;
+        })
+    }
+}
+
+checkForBackground(backgroundActualColor);
 
 // Function to create multiple div linked to a listener
 // that tell us how many pixels we need: 16x16?
@@ -161,7 +186,6 @@ const clearGrid = () => {
 const clearBtn = document.querySelector('#clear');
 clearBtn.addEventListener('click', () => {
     clearGrid();
-    gridLinesBtn.classList.add("active");
     paintPixels();
     active = "pen";
     btns.forEach(btn => btn.classList.remove('active'));
@@ -175,8 +199,21 @@ gridLinesBtn.addEventListener('click', () => {
     gridLinesBtn.classList.toggle("active");
     document.querySelectorAll(".pixel").forEach(e => {
         if(gridLinesBtn.classList.contains("active")) {
+            // checkForBackground(backgroundActualColor);
             // @ts-ignore
-            e.style.border = `1px solid rgba(0, 0, 0, 0.05)`;
+            const color = backgroundActualColor.substring(1);      // strip #
+            const rgb = parseInt(color, 16);   // convert rrggbb to decimal
+            const r = (rgb >> 16) & 0xff;  // extract red
+            const g = (rgb >> 8) & 0xff;  // extract green
+            const b = (rgb >> 0) & 0xff;  // extract blue
+            const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+            if(luma < 120) {
+                // @ts-ignore
+                e.style.border = `1px solid rgba(255, 255, 255, 0.3)`;
+            } else {
+                // @ts-ignore
+                e.style.border = `1px solid rgba(0, 0, 0, 0.1)`;
+            }
             gridLinesBtn.innerHTML = "Grid Lines: On";
         } else {
             // @ts-ignore

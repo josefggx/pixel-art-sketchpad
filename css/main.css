@@ -95,7 +95,7 @@ h1#tittle {
 }
 
 body {
-  min-height: 1000px;
+  min-height: 900px;
 }
 
 div#canvas {
@@ -103,11 +103,6 @@ div#canvas {
   width: 600px;
   height: 600px;
   display: grid;
-}
-
-div.pixel {
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  filter: brightness(1);
 }
 
 div#size-container {
@@ -152,7 +147,7 @@ div#container {
 }
 
 div#canvas-container {
-  border: 5px solid rgb(49, 49, 49);
+  border: 16px inset rgb(31, 14, 117);
 }
 
 div#options-container {
@@ -233,21 +228,26 @@ div#color-options>input {
   transition: .2s;
 }
 
+.inactive {
+  background-color: #3d44a8;
+  color: white;
+}
+
 #grid-lines:hover {
   background-color: #e6e6e6;
 }
 
-#grid-lines.active:hover {
+#grid-lines.inactive:hover {
   background-color: #343a8b;
 }
 
 #save {
-  background-color: #40b659;
+  background-color: #40b67b;
   color: #ffffff;
 }
 
 #save:hover {
-  background-color: #39a150;
+  background-color: #39a16d;
   color: #ffffff;
 }
 

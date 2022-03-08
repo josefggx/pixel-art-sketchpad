@@ -18,6 +18,8 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
+  </script>
 
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -29,7 +31,7 @@
     <div id="options-container">
 
       <div id="color-options">
-        <input type="color" value="#333333" name="pen-color" id="pen-color"
+        <input type="color" value="#3F3F3F" name="pen-color" id="pen-color"
           aria-label="pen-color">
         <label for="pen-color">Pen Color</label>
         <input type="color" value="#FFFFFF" name="background-color"
@@ -57,12 +59,13 @@
     </div>
 
     <div id="options-container-2">
-      <button class="btn-2" type="button" id="save">Save</button>
-      <button class="btn-3 active" type="button" id="grid-lines">Grid
-        Lines: On</button>
+      <button class="btn-2" type="button" id="save"
+        onclick="takeshot();">Save</button>
+      <button class="btn-3" type="button" id="grid-lines">Grid
+        Lines: Off</button>
       <div id="size-container">
-        <label id="size-label" for="canvas-size">24 x 24</label>
-        <input name="canvas-size" type="range" step="1" value="24" min="1"
+        <label id="size-label" for="canvas-size">16 x 16</label>
+        <input name="canvas-size" type="range" step="1" value="16" min="1"
           max="64" aria-label="canvas-size" class="slider" id="size-slider">
       </div>
       <button class="btn-2" type="button" id="clear">Clear canvas</button>
@@ -72,6 +75,18 @@
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+
+    function takeshot() {
+      let objective = document.getElementById("canvas-container");
+      html2canvas(objective).then(canvas => {
+        let link = document.createElement('a');
+        link.download = "MyPixelArt.png";
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
 </body>
 
 </html>

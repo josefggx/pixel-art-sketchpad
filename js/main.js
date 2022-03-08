@@ -51,6 +51,7 @@ let canvasSize;
 
 // @ts-ignore
 let backgroundActualColor = document.querySelector('#background-color').value;
+let backgroundSecondaryColor = "rgb(200, 200, 200)";
 // @ts-ignore
 document.querySelector('#background-color').oninput = () => {
     // @ts-ignore
@@ -71,12 +72,12 @@ const checkForBackground = (c) => {
     if(luma < 120) {
         document.querySelectorAll('.pixel').forEach(e => {
             // @ts-ignore
-            e.style.border = `1px solid rgba(255, 255, 255, 0.3)`;
+            e.style.border = `0.1px solid rgba(255, 255, 255, 0.2)`;
         })
     } else {
         document.querySelectorAll('.pixel').forEach(e => {
             // @ts-ignore
-            e.style.border = `1px solid rgba(0, 0, 0, 0.1)`;
+            e.style.border = `0.1px solid rgba(100, 100, 100, 0.2)`;
         })
     }
 }
@@ -92,8 +93,7 @@ const generatePixels = () => {
     container.style.gridTemplateColumns = `repeat(${canvasSize}, 1fr)`;
     // @ts-ignore
     container.style.gridTemplateRows = `repeat(${canvasSize}, 1fr)`;
-    const divNumber = canvasSize * canvasSize;
-    for(let i = 0; i < divNumber; i++) {
+    for(let i = 0; i < (canvasSize ** 2); i++) {
         const pixel = document.createElement("div");
         pixel.classList.add("pixel");
         pixel.style.backgroundColor = backgroundActualColor;
@@ -101,6 +101,8 @@ const generatePixels = () => {
     }
     return;
 }
+
+
 
 generatePixels();
 
@@ -196,9 +198,9 @@ clearBtn.addEventListener('click', () => {
 const gridLinesBtn = document.querySelector('#grid-lines');
 
 gridLinesBtn.addEventListener('click', () => {
-    gridLinesBtn.classList.toggle("active");
+    gridLinesBtn.classList.toggle("inactive");
     document.querySelectorAll(".pixel").forEach(e => {
-        if(gridLinesBtn.classList.contains("active")) {
+        if(gridLinesBtn.classList.contains("inactive")) {
             // checkForBackground(backgroundActualColor);
             // @ts-ignore
             const color = backgroundActualColor.substring(1);      // strip #
@@ -209,10 +211,10 @@ gridLinesBtn.addEventListener('click', () => {
             const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
             if(luma < 120) {
                 // @ts-ignore
-                e.style.border = `1px solid rgba(255, 255, 255, 0.3)`;
+                e.style.border = `0.1px solid rgba(255, 255, 255, 0.2)`;
             } else {
                 // @ts-ignore
-                e.style.border = `1px solid rgba(0, 0, 0, 0.1)`;
+                e.style.border = `0.1px solid rgba(100, 100, 100, 0.2)`;
             }
             gridLinesBtn.innerHTML = "Grid Lines: On";
         } else {
@@ -229,9 +231,6 @@ function LightenDarkenColor(color, percent) {
     return "rgb(" + (Math.round((t - R) * p) + R) + "," + (Math.round((t - G) * p) + G) + "," + (Math.round((t - B) * p) + B) + ")";
 }
 
-// TEST
-console.log(LightenDarkenColor("3F6D2A", -40));
-
 // This will help us to determine if mouse is down or out
 let mouseIsDown = false;
 
@@ -240,6 +239,14 @@ const paintPixels = () => {
     document.querySelectorAll(".pixel").forEach(e => {
         window.addEventListener("mousedown", () => {
             mouseIsDown = true;
+        });
+        e.addEventListener("mouseenter", () => {
+            // @ts-ignore
+            e.style.filter = "brightness(0.9)";
+        });
+        e.addEventListener("mouseleave", () => {
+            // @ts-ignore
+            e.style.filter = "brightness(1)";
         });
         e.addEventListener("mousedown", () => {
             mouseIsDown = true;
@@ -321,6 +328,7 @@ document.querySelector("#size-slider").onchange = () => {
     sliderLabelLive();
     deleteGrid();
     gridLinesBtn.classList.add("active");
+    gridLinesBtn.innerHTML = "Grid Lines: On";
     generatePixels();
     paintPixels();
 }

@@ -124,8 +124,7 @@ document.querySelector("#pen-color").oninput = () => {
     // @ts-ignore
     actualColor = document.querySelector("#pen-color").value;
     active = "pen";
-    btns.forEach(btn => btn.classList.remove('active'));
-    document.querySelector("#pen").classList.add('active');
+
 }
 
 // This function take the divs and apply a the grid
@@ -190,8 +189,8 @@ clearBtn.addEventListener('click', () => {
     clearGrid();
     paintPixels();
     active = "pen";
-    btns.forEach(btn => btn.classList.remove('active'));
-    document.querySelector("#pen").classList.add('active');
+    btns.forEach(btn => btn.classList.remove('inactive'));
+    document.querySelector("#pen").classList.add('inactive');
 })
 
 

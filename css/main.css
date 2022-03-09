@@ -83,23 +83,29 @@ textarea {
 /* ==========================================================================
   Author's custom styles
    ========================================================================== */
-:root {
-  --columns-and-rows: 2;
-}
 
+div#mega-container {
+  width: 1200px;
+  height: 850px;
+  background-color: rgb(255, 207, 207);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
 
 h1#tittle {
+  font-family: Arcade, monospace;
+  color: #000000;
   text-align: center;
-  font-size: 2.8rem;
-  font-weight: bold;
+  font-size: 7.8rem;
 }
 
-body {
-  min-height: 900px;
-}
 
 div#canvas {
-  margin: 0 auto;
   width: 600px;
   height: 600px;
   display: grid;
@@ -144,11 +150,13 @@ div#container {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
 }
 
 div#canvas-container {
   border: 16px inset rgb(31, 14, 117);
 }
+
 
 div#options-container {
   display: flex;
@@ -179,14 +187,37 @@ div#color-options {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   justify-items: start;
+  gap: 10px;
 }
 
 div#color-options>label {
   margin-left: -30px;
+  margin-top: 5px;
 }
 
 div#color-options>input {
   justify-self: center;
+  -webkit-appearance: none;
+  width: 60px;
+  height: 30px;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  transition: transform 0.1s ease-in-out;
+}
+
+div#color-options>input:hover {
+  transform: scale(1.05);
+}
+
+div#color-options>input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+div#color-options>input::-webkit-color-swatch {
+  border: 1px solid black;
+  border-radius: 50px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.55);
 }
 
 .btn {

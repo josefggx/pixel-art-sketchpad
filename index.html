@@ -15,9 +15,15 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
-
+  <link
+    href="//db.onlinewebfonts.com/c/f1065d0fff2de97c2c7ff72bb019a88e?family=Arcade"
+    rel="stylesheet" type="text/css" />
+  <link
+    href="//db.onlinewebfonts.com/c/69055af173b3553d7100849835ccad8b?family=pixelino"
+    rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
   </script>
 
@@ -25,52 +31,51 @@
 </head>
 
 <body>
-  <h1 id="tittle">Pixel Art - Sketchpad</h1>
-  <div id="container">
+  <div id="mega-container">
+    <h1 id="tittle">PixelArt-Sketchpad</h1>
+    <div id="container">
+      <div id="options-container">
+        <div id="color-options">
+          <input type="color" value="#3F3F3F" name="pen-color" id="pen-color"
+            aria-label="pen-color">
+          <label for="pen-color">Pen Color</label>
+          <input type="color" value="#FFFFFF" name="background-color"
+            id="background-color" aria-label="background-color">
+          <label for="background-color">Background Color</label>
+          <div id="background-color"></div>
+        </div>
 
-    <div id="options-container">
+        <div id="button-container">
+          <button class="btn active" type="button" id="pen">Pen
+            mode</button>
+          <button class="btn" type="button" id="eraser">Eraser</button>
+          <button class="btn" type="button" id="eyedropper">Eyedropper
+            Tool</button>
+          <button class="btn" type="button" id="rainbow">Rainbow Pen</button>
+          <button class="btn" type="button" id="lightening">Lightening
+            tool</button>
+          <button class="btn" type="button" id="shading">Shading Tool</button>
+        </div>
 
-      <div id="color-options">
-        <input type="color" value="#3F3F3F" name="pen-color" id="pen-color"
-          aria-label="pen-color">
-        <label for="pen-color">Pen Color</label>
-        <input type="color" value="#FFFFFF" name="background-color"
-          id="background-color" aria-label="background-color">
-        <label for="background-color">Background Color</label>
-        <div id="background-color"></div>
       </div>
 
-      <div id="button-container">
-        <button class="btn active" type="button" id="pen">Pen
-          mode</button>
-        <button class="btn" type="button" id="eraser">Eraser</button>
-        <button class="btn" type="button" id="eyedropper">Eyedropper
-          Tool</button>
-        <button class="btn" type="button" id="rainbow">Rainbow Pen</button>
-        <button class="btn" type="button" id="lightening">Lightening
-          tool</button>
-        <button class="btn" type="button" id="shading">Shading Tool</button>
+      <div id="canvas-container">
+        <div id="canvas"></div>
       </div>
 
-    </div>
-
-    <div id="canvas-container">
-      <div id="canvas"></div>
-    </div>
-
-    <div id="options-container-2">
-      <button class="btn-2" type="button" id="save"
-        onclick="takeshot();">Save</button>
-      <button class="btn-3" type="button" id="grid-lines">Grid
-        Lines: Off</button>
-      <div id="size-container">
-        <label id="size-label" for="canvas-size">16 x 16</label>
-        <input name="canvas-size" type="range" step="1" value="16" min="1"
-          max="64" aria-label="canvas-size" class="slider" id="size-slider">
+      <div id="options-container-2">
+        <button class="btn-2" type="button" id="save"
+          onclick="takeshot();">Save</button>
+        <button class="btn-3" type="button" id="grid-lines">Grid
+          Lines: Off</button>
+        <div id="size-container">
+          <label id="size-label" for="canvas-size">16 x 16</label>
+          <input name="canvas-size" type="range" step="1" value="16" min="1"
+            max="64" aria-label="canvas-size" class="slider" id="size-slider">
+        </div>
+        <button class="btn-2" type="button" id="clear">Clear canvas</button>
       </div>
-      <button class="btn-2" type="button" id="clear">Clear canvas</button>
     </div>
-  </div>
   </div>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>

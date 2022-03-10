@@ -22,5 +22,3 @@ site.webmanifest
 tile-wide.png
 tile.png
 js/vendor
-css/normalize.css
-.nojekyll

@@ -418,6 +418,35 @@ div#button-container-2 {
   background: #0d179b
 }
 
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { 
+  .canvas {
+    width: 300px; 
+    height: 300px; 
+  }
+
+  div#options-container {
+    width: 140px; 
+    margin-top: 70px;
+    margin-left: 10px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 1080px) {
+  .example {
+    background: green;
+  }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .example {
+    background: orange;
+  }
+}
+
 /* SR ONLY */
 .hidden,
 [hidden] {

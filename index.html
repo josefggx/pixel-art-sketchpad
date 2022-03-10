@@ -21,9 +21,20 @@
   <link
     href="//db.onlinewebfonts.com/c/69055af173b3553d7100849835ccad8b?family=pixelino"
     rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
 
+  <script src="https://kit.fontawesome.com/75cee50ce6.js"
+    crossorigin="anonymous"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js">
   </script>
 
@@ -32,29 +43,37 @@
 
 <body>
   <div id="mega-container">
-    <h1 id="tittle">PixelArt-Sketchpad</h1>
+
+    <div id="title">
+      <h1 id="tittle">PixelArt - Sketchpad</h1>
+    </div>
+
     <div id="container">
       <div id="options-container">
         <div id="color-options">
           <input type="color" value="#3F3F3F" name="pen-color" id="pen-color"
             aria-label="pen-color">
-          <label for="pen-color">Pen Color</label>
-          <input type="color" value="#FFFFFF" name="background-color"
+          <label for="pen-color"><i class="fa-solid fa-paintbrush"></i></label>
+          <input type="color" value="#F1F1F1" name="background-color"
             id="background-color" aria-label="background-color">
-          <label for="background-color">Background Color</label>
+          <label for="background-color"><i
+              class="fa-solid fa-fill-drip"></i></label>
           <div id="background-color"></div>
         </div>
 
         <div id="button-container">
-          <button class="btn active" type="button" id="pen">Pen
-            mode</button>
-          <button class="btn" type="button" id="eraser">Eraser</button>
-          <button class="btn" type="button" id="eyedropper">Eyedropper
-            Tool</button>
-          <button class="btn" type="button" id="rainbow">Rainbow Pen</button>
-          <button class="btn" type="button" id="lightening">Lightening
-            tool</button>
-          <button class="btn" type="button" id="shading">Shading Tool</button>
+          <button class="btn active" type="button" id="pen">Pen<i
+              class="fa-solid fa-pen"></i></button>
+          <button class="btn" type="button" id="eraser">Eraser<i
+              class="fa-solid fa-eraser"></i></button>
+          <button class="btn" type="button" id="eyedropper">Eyedropper<i
+              class="fa-solid fa-eye-dropper"></i></button>
+          <button class="btn" type="button" id="rainbow">Rainbow<i
+              class="fa-solid fa-rainbow"></i></button>
+          <button class="btn" type="button" id="lightening">Lightening<i
+              class="fa-solid fa-sun"></i></button>
+          <button class="btn" type="button" id="shading">Shading<i
+              class="fa-solid fa-circle-half-stroke"></i></button>
         </div>
 
       </div>
@@ -64,18 +83,26 @@
       </div>
 
       <div id="options-container-2">
-        <button class="btn-2" type="button" id="save"
-          onclick="takeshot();">Save</button>
-        <button class="btn-3" type="button" id="grid-lines">Grid
-          Lines: Off</button>
+        <button class="btn-2" type="button" id="save" onclick="takeshot();"><i
+            class="fa-solid fa-floppy-disk"></i> Save</button>
         <div id="size-container">
-          <label id="size-label" for="canvas-size">16 x 16</label>
+          <button class="btn-3" type="button" id="grid-lines"><i
+              class="fa-solid fa-table-cells"></i> Off </button>
           <input name="canvas-size" type="range" step="1" value="16" min="1"
             max="64" aria-label="canvas-size" class="slider" id="size-slider">
+          <label id="size-label" for="canvas-size">16 x 16</label>
         </div>
-        <button class="btn-2" type="button" id="clear">Clear canvas</button>
+        <button class="btn-2" type="button" id="clear"><i
+            class="fa-solid fa-trash-can"></i> Clear</button>
       </div>
     </div>
+
+    <div id="footer">
+      <p id="footer-text">Built & Designed by Josefggx | </p> <a
+        href="https://github.com/josefgg"><i
+          class="fa-brands fa-github"></i><span>.</span></a>
+    </div>
+
   </div>
 
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
@@ -83,7 +110,7 @@
   <script type="text/javascript">
 
     function takeshot() {
-      let objective = document.getElementById("canvas-container");
+      let objective = document.getElementById("canvas");
       html2canvas(objective).then(canvas => {
         let link = document.createElement('a');
         link.download = "MyPixelArt.png";

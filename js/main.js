@@ -99,10 +99,7 @@ const generatePixels = () => {
         pixel.style.backgroundColor = backgroundActualColor;
         container.appendChild(pixel);
     }
-    return;
 }
-
-
 
 generatePixels();
 
@@ -124,7 +121,8 @@ document.querySelector("#pen-color").oninput = () => {
     // @ts-ignore
     actualColor = document.querySelector("#pen-color").value;
     active = "pen";
-
+    btns.forEach(btn => btn.classList.remove('active'));
+    document.querySelector("#pen").classList.add('active');
 }
 
 // This function take the divs and apply a the grid
@@ -189,14 +187,14 @@ clearBtn.addEventListener('click', () => {
     clearGrid();
     paintPixels();
     active = "pen";
-    btns.forEach(btn => btn.classList.remove('inactive'));
-    document.querySelector("#pen").classList.add('inactive');
+    btns.forEach(btn => btn.classList.remove('active'));
+    document.querySelector("#pen").classList.add('active');
 })
 
 
 const gridLinesBtn = document.querySelector('#grid-lines');
 
-gridLinesBtn.addEventListener('click', () => {
+function gridLinesFunction() {
     gridLinesBtn.classList.toggle("inactive");
     document.querySelectorAll(".pixel").forEach(e => {
         if(gridLinesBtn.classList.contains("inactive")) {
@@ -215,14 +213,42 @@ gridLinesBtn.addEventListener('click', () => {
                 // @ts-ignore
                 e.style.border = `0.1px solid rgba(100, 100, 100, 0.2)`;
             }
-            gridLinesBtn.innerHTML = "Grid Lines: On";
+            gridLinesBtn.innerHTML = `<i class="fa-solid fa-table-cells"></i> On`;
         } else {
             // @ts-ignore
             e.style.border = "0px";
-            gridLinesBtn.innerHTML = "Grid Lines: Off";
+            gridLinesBtn.innerHTML = `<i class="fa-solid fa-table-cells"></i> Off`;;
         }
     });
-})
+}
+
+gridLinesBtn.addEventListener('click', gridLinesFunction);
+
+function gridLinesAfterResizing() {
+    document.querySelectorAll(".pixel").forEach(e => {
+        if(gridLinesBtn.classList.contains("inactive")) {
+            // checkForBackground(backgroundActualColor);
+            // @ts-ignore
+            const color = backgroundActualColor.substring(1);      // strip #
+            const rgb = parseInt(color, 16);   // convert rrggbb to decimal
+            const r = (rgb >> 16) & 0xff;  // extract red
+            const g = (rgb >> 8) & 0xff;  // extract green
+            const b = (rgb >> 0) & 0xff;  // extract blue
+            const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+            if(luma < 120) {
+                // @ts-ignore
+                e.style.border = `0.1px solid rgba(255, 255, 255, 0.2)`;
+            } else {
+                // @ts-ignore
+                e.style.border = `0.1px solid rgba(100, 100, 100, 0.2)`;
+            }
+        } else {
+            // @ts-ignore
+            e.style.border = "0px";
+
+        }
+    });
+}
 
 // Function to light or shade colors, put negative values in percent to shade.
 function LightenDarkenColor(color, percent) {
@@ -267,6 +293,7 @@ const paintPixels = () => {
                 let newColor = LightenDarkenColor(oldColor, 0.06)
                 // @ts-ignore
                 e.style.backgroundColor = `${newColor}`;
+                e.classList.add("painted");
             }
             if(active === "shading") {
                 // @ts-ignore
@@ -274,6 +301,7 @@ const paintPixels = () => {
                 let newColor = LightenDarkenColor(oldColor, -0.06)
                 // @ts-ignore
                 e.style.backgroundColor = `${newColor}`;
+                e.classList.add("painted");
             }
         });
         window.addEventListener('mouseup', function () {
@@ -306,6 +334,7 @@ const paintPixels = () => {
                     let newColor = LightenDarkenColor(oldColor, 0.06);
                     // @ts-ignore
                     e.style.backgroundColor = `${newColor}`;
+                    e.classList.add("painted");
                 }
                 if(active === "shading") {
                     // @ts-ignore
@@ -313,6 +342,7 @@ const paintPixels = () => {
                     let newColor = LightenDarkenColor(oldColor, -0.06);
                     // @ts-ignore
                     e.style.backgroundColor = `${newColor}`;
+                    e.classList.add("painted");
                 }
             }
         })
@@ -326,9 +356,8 @@ paintPixels();
 document.querySelector("#size-slider").onchange = () => {
     sliderLabelLive();
     deleteGrid();
-    gridLinesBtn.classList.add("active");
-    gridLinesBtn.innerHTML = "Grid Lines: On";
     generatePixels();
     paintPixels();
+    gridLinesAfterResizing();
 }
 

@@ -39,7 +39,7 @@ html {
 }
 
 body {
-  font-size: 1.6rem; 
+  font-size: 1.6rem;
 }
 
 ::-moz-selection {
@@ -94,11 +94,11 @@ body {
 div#mega-container {
   display: grid;
   align-items: center;
-  width: 1000px;
-  height: 850px;
-  background: linear-gradient(to top,#e03737, #fa6a6a) fixed; 
+  max-width: 950px;
+  max-height: 800px;
+  background: linear-gradient(to top, #e03737, #fa6a6a) fixed;
   position: absolute;
-  top: -50px;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
@@ -144,12 +144,12 @@ h1#tittle {
   font-family: 'Lobster', cursive;
   color: #fcee86;
   text-align: center;
-  font-size: 6.8rem;
+  font-size: 6.4rem;
 }
 
 div#canvas {
-  width: 600px;
-  height: 600px;
+  width: 550px;
+  height: 550px;
   display: grid;
 }
 
@@ -179,6 +179,8 @@ div#container {
 div#canvas-container {
   border: 16px inset #cccccc;
   border-radius: 12px;
+  width: 550px;
+  height: 550px;
 }
 
 div#options-container {
@@ -188,7 +190,7 @@ div#options-container {
   gap: 40px;
   justify-content: flex-start;
   margin-top: 70px;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 div#options-container-2 {
@@ -213,7 +215,7 @@ div#color-options {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  margin-left: 45px;
+  margin-left: 35px;
   gap: 10px;
   color: #3d3d3d;
   font-size: 2rem;
@@ -261,7 +263,7 @@ div#color-options>input::-webkit-color-swatch {
   display: flex;
   justify-content: flex-end;
   padding: 10px 7px;
-  width: 140px;
+  width: 130px;
   border-radius: 12px;
   box-shadow: 3px 2px 10px 1px rgba(0, 0, 0, 0.20);
 }
@@ -418,34 +420,7 @@ div#button-container-2 {
   background: #0d179b
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) { 
-  .canvas {
-    width: 300px; 
-    height: 300px; 
-  }
 
-  div#options-container {
-    width: 140px; 
-    margin-top: 70px;
-    margin-left: 10px;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 601px) and (max-width: 1080px) {
-  .example {
-    background: green;
-  }
-}
-
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .example {
-    background: orange;
-  }
-}
 
 /* SR ONLY */
 .hidden,

@@ -213,11 +213,9 @@ function gridLinesFunction() {
                 // @ts-ignore
                 e.style.border = `0.1px solid rgba(100, 100, 100, 0.2)`;
             }
-            gridLinesBtn.innerHTML = `<i class="fa-solid fa-table-cells"></i> On`;
         } else {
             // @ts-ignore
             e.style.border = "0px";
-            gridLinesBtn.innerHTML = `<i class="fa-solid fa-table-cells"></i> Off`;;
         }
     });
 }

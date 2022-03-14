@@ -51,32 +51,43 @@
 
     <div id="container">
       <div id="options-container">
+
         <div id="color-options">
+          <label for="pen-color"><i class="fa-solid fa-paintbrush"></i></label>
           <input type="color" value="#3F3F3F" name="pen-color" id="pen-color"
             aria-label="pen-color">
-          <label for="pen-color"><i class="fa-solid fa-paintbrush"></i></label>
-          <input type="color" value="#F1F1F1" name="background-color"
-            id="background-color" aria-label="background-color">
           <label for="background-color"><i
               class="fa-solid fa-fill-drip"></i></label>
+          <input type="color" value="#F1F1F1" name="background-color"
+            id="background-color" aria-label="background-color">
+
           <div id="background-color"></div>
         </div>
 
-        <div id="button-container">
-          <button class="btn active" type="button" id="pen">Pen<i
-              class="fa-solid fa-pen"></i></button>
-          <button class="btn" type="button" id="eraser">Eraser<i
-              class="fa-solid fa-eraser"></i></button>
-          <button class="btn" type="button" id="eyedropper">Eyedropper<i
-              class="fa-solid fa-eye-dropper"></i></button>
-          <button class="btn" type="button" id="rainbow">Rainbow<i
-              class="fa-solid fa-rainbow"></i></button>
-          <button class="btn" type="button" id="lightening">Lightening<i
-              class="fa-solid fa-sun"></i></button>
-          <button class="btn" type="button" id="shading">Shading<i
-              class="fa-solid fa-circle-half-stroke"></i></button>
+        <div id="button-icon-container">
+          <div id="button-container">
+            <button class="btn active" type="button" id="pen"
+              title="Pen"></button>
+            <button class="btn" type="button" id="eraser"
+              title="Eraser"></button>
+            <button class="btn" type="button" id="eyedropper"
+              title="Eyedropper"></button>
+            <button class="btn" type="button" id="rainbow"
+              title="Rainbow Pen"></button>
+            <button class="btn" type="button" id="lightening"
+              title="Lightening Tool"></button>
+            <button class="btn" type="button" id="shading" title="Shading Tool">
+            </button>
+          </div>
+          <div id="icon-container">
+            <i class="fa-solid fa-pen"></i>
+            <i class="fa-solid fa-eraser"></i>
+            <i class="fa-solid fa-eye-dropper"></i>
+            <i class="fa-solid fa-rainbow"></i>
+            <i class="fa-solid fa-sun"></i>
+            <i class="fa-solid fa-circle-half-stroke"></i>
+          </div>
         </div>
-
       </div>
 
       <div id="canvas-container">
@@ -84,17 +95,39 @@
       </div>
 
       <div id="options-container-2">
-        <button class="btn-2" type="button" id="save" onclick="takeshot();"><i
-            class="fa-solid fa-floppy-disk"></i> Save</button>
+        <div id="save-button-container">
+          <button class="btn-2" type="button" id="save" title="Save"
+            onclick="takeshot();">
+          </button>
+          <div id="save-icon">
+            <i class="fa-solid fa-floppy-disk"></i>
+          </div>
+
+        </div>
+
+
         <div id="size-container">
-          <button class="btn-3" type="button" id="grid-lines"><i
-              class="fa-solid fa-table-cells"></i> Off </button>
+          <div id="grid-button-container">
+            <button class="btn-3" type="button" id="grid-lines"
+              title="Toggle Grid Lines">
+            </button>
+            <div id="grid-icon">
+              <i class="fa-solid fa-table-cells"></i>
+            </div>
+          </div>
+
           <input name="canvas-size" type="range" step="1" value="16" min="1"
             max="64" aria-label="canvas-size" class="slider" id="size-slider">
           <label id="size-label" for="canvas-size">16 x 16</label>
         </div>
-        <button class="btn-2" type="button" id="clear"><i
-            class="fa-solid fa-trash-can"></i> Clear</button>
+        <div id="clear-button-container">
+          <button class="btn-2" type="button" id="clear"
+            title="Clear Canvas"></button>
+          <div id="clear-icon">
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+        </div>
+
       </div>
     </div>
 

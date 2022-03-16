@@ -288,7 +288,7 @@ const paintPixels = () => {
             if(active === "lightening") {
                 // @ts-ignore
                 let oldColor = e.style.backgroundColor;
-                let newColor = LightenDarkenColor(oldColor, 0.06)
+                let newColor = LightenDarkenColor(oldColor, 0.255)
                 // @ts-ignore
                 e.style.backgroundColor = `${newColor}`;
                 e.classList.add("painted");
@@ -296,7 +296,7 @@ const paintPixels = () => {
             if(active === "shading") {
                 // @ts-ignore
                 let oldColor = e.style.backgroundColor;
-                let newColor = LightenDarkenColor(oldColor, -0.06)
+                let newColor = LightenDarkenColor(oldColor, -0.1) 
                 // @ts-ignore
                 e.style.backgroundColor = `${newColor}`;
                 e.classList.add("painted");
@@ -329,7 +329,7 @@ const paintPixels = () => {
                 if(active === "lightening") {
                     // @ts-ignore
                     let oldColor = e.style.backgroundColor;
-                    let newColor = LightenDarkenColor(oldColor, 0.06);
+                    let newColor = LightenDarkenColor(oldColor, 0.255);
                     // @ts-ignore
                     e.style.backgroundColor = `${newColor}`;
                     e.classList.add("painted");
@@ -337,7 +337,7 @@ const paintPixels = () => {
                 if(active === "shading") {
                     // @ts-ignore
                     let oldColor = e.style.backgroundColor;
-                    let newColor = LightenDarkenColor(oldColor, -0.06);
+                    let newColor = LightenDarkenColor(oldColor, -0.1);
                     // @ts-ignore
                     e.style.backgroundColor = `${newColor}`;
                     e.classList.add("painted");

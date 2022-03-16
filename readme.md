@@ -25,4 +25,4 @@ Greatly improved functionality in general (shortened, optimized and reusable fun
 - Lastly, I would like to say that I really enjoyed building this project. It is the first project that I complete and make public, so probably the ones I publish in the future will be much more polished in all senses, but this project will always have a special place in my memory because of how much I enjoyed doing it and all the learning that it provided.
 
 ## My PixelArt Sketchpad in action:
-![demo of Sketchpad](/demo.png)
+![demo of Sketchpad](/images/demo.png)

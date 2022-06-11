@@ -11,10 +11,8 @@ img
 .htaccess
 404.html
 browserconfig.xml
-favicon.ico
 humans.txt
 LICENSE.txt
-icon.png
 robots.txt
 package.json
 package-lock.json
@@ -22,4 +20,3 @@ site.webmanifest
 tile-wide.png
 tile.png
 js/vendor
-favicon.png
